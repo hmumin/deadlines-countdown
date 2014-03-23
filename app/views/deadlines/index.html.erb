@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/TimeCircles.js"></script>
+    <script type="text/javascript" src="js/TimeCircles.js"></script>
+    
+        <link rel="stylesheet" href="css/TimeCircles.css" />
+        
+        <link rel="stylesheet" href="css/TimeCircles.css" />
+   
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        
+    <title>Two Column Portfolio Template for Bootstrap 3</title>
+        
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+        
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS for the 'Thumbnail Gallery' Template -->
+    <link href="css/2-col-portfolio.css" rel="stylesheet">
+</head>
+
+<body>
+<body background="img/wild_oliva.JPG">
+
+   
+    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <%= link_to 'Deadline CountDown', root_path, :class => "navbar-brand" %>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><%= link_to "Edit Profile", edit_user_registration_path %>
+                   <li><%= link_to "Log-out", destroy_user_session_path, method: :delete%>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <h1 class="page-header">Deadline Countdown
+                    <small>Stay on track with all your projects</small>
+                </h1>
+            </div>
+            <%= link_to "New Deadline", new_deadline_path, :class => 'btn btn-success'%>
+        </div>
+
+        <div class="row">
+
+    <table>
+        <% @deadlines.each do |deadline| %>
+        <tr>
+            <td><div class="col-lg-6 col-md-6 portfolio-item">
+                
+                    <div id="circle">
+                        <div class="DateCountdown" data-date=<%= deadline.date %> style="width: 100%;"></div>
+
+                    </div>
+                </a> 
+                     <script>
+        $(".DateCountdown").TimeCircles({
+    "animation": "smooth",
+    "bg_width": 0.3,
+    "fg_width": 0.03333333333333333,
+    "circle_bg_color": "#90989F",
+    "time": {
+        "Days": {
+            "text": "Days",
+            "color": "#d23419",
+            "show": true
+        },
+        "Hours": {
+            "text": "Hours",
+            "color": "#46c871",
+            "show": true
+        },
+        "Minutes": {
+            "text": "Minutes",
+            "color": "#6698ea",
+            "show": true
+        },
+        "Seconds": {
+            "text": "Seconds",
+            "color": "#d537f1",
+            "show": true
+        }
+    }
+});
+
+     </script>  
+            </div></td>
+            
+            <td>
+                
+                <td><h3><%= deadline.title %></h3>
+                  Description:  <%= deadline.description %><br><%= link_to 'delete', deadline_path(deadline),
+                method: :delete, data: { confirm: 'are your sure'}, :class =>'btn btn-info' %>
+                <%= link_to 'Edit', edit_deadline_path(deadline), :class =>'btn btn-info' %></td>
+              </td>
+        </tr>
+        <% end %>
+
+
+    </table>
+
+
+        </div>
+       
+    <center><%= will_paginate @deadlines, renderer: BootstrapPagination::Rails %></center>
+
+
+    </div>
+    <!-- /.container -->
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/TimeCircles.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="/js/TimeCircles.js"></script>
+    
+        <link rel="stylesheet" href="/css/TimeCircles.css" />
+   
+        
+        
+        
+</head>
+<body>
+	<br>
+    <br>
+<center><p>
+	<strong>Title:</strong>
+	<%= @deadline.title %>
+</p><center>
+
+<center><p>
+	<strong>Date:</strong>
+	<%= @deadline.date %>
+</p><center>
+
+<center><p style="margin-left:5em;">
+	<strong>Description:</strong>
+	<%= @deadline.description %>
+</p><center>
+<div id="circle">
+   <div class="DateCountdown" data-date=<%= @deadline.date %> style="width: 100%;"></div>
+
+   <script>
+        $(".DateCountdown").TimeCircles({
+    "animation": "smooth",
+    "bg_width": 0.3,
+    "fg_width": 0.03333333333333333,
+    "circle_bg_color": "#90989F",
+    "time": {
+        "Days": {
+            "text": "Days",
+            "color": "#d23419",
+            "show": true
+        },
+        "Hours": {
+            "text": "Hours",
+            "color": "#46c871",
+            "show": true
+        },
+        "Minutes": {
+            "text": "Minutes",
+            "color": "#6698ea",
+            "show": true
+        },
+        "Seconds": {
+            "text": "Seconds",
+            "color": "#d537f1",
+            "show": true
+        }
+    }
+});
+
+     </script> 
+     </div>
+     <br>
+<%= link_to "Back", deadlines_path, :class =>'btn btn-primary' %>
+</body>
+</html>

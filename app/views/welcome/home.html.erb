@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Laptop &mdash; Coverstrap Template</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/laptop.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+         <a class="navbar-brand nav-link" href=<%=root_path%>>Deadline CountDown</a>
+        </div> <!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+            <li><%= link_to "Edit Profile", edit_user_registration_path %>
+            <li><%= link_to "Log-out", destroy_user_session_path, method: :delete%> 
+              <% else %>
+            <li><%= link_to "Log-In", new_user_session_path %>
+            
+            <% end %>
+          </ul>
+        </div> <!-- /.navbar-collapse -->
+      </div> <!-- /.container -->
+    </nav> <!-- /.navbar -->
+
+    <div id="top" class="jumbotron">
+      <div class="container">
+        <h1>Track Deadlines Easily</h1>
+        <%= link_to "Sign Up Now" , new_user_registration_path, class: "btn btn-primary btn-large" %>
+        <br></br>
+        <div id="macbook">
+          <div id="tour" class="carousel slide">
+            <ol class="carousel-indicators">
+              <li data-target="#tour" data-slide-to="0" class="active"></li>
+              <li data-target="#tour" data-slide-to="1"></li>
+              <li data-target="#tour" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="img/Shotscreen1.png">
+                <div class="carousel-caption">
+                  View Countdowns for all your projects with ease
+                </div>
+              </div>
+              <div class="item">
+                <img src="img/ScreenShot2.png">
+                <div class="carousel-caption">
+                  Easily Create New Deadlines
+                </div>
+              </div>
+              <!--<div class="item">
+                <img src="img/stock3.jpg">
+                <div class="carousel-caption">
+                  Photo #3 Caption
+                </div>
+              </div>-->
+            </div> <!-- /.carousel-inner -->
+
+            <a class="left carousel-control" href="#tour" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#tour" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div> <!-- /#tour -->
+        </div> <!-- /#macbook -->
+      </div> <!-- /.container -->
+    </div> <!-- /#top.jumbotron -->
+
+    
+    <footer>
+      <div class="container clearfix">
+        <p class="pull-left">
+          Copyright &copy; Deadline Countdown 2013
+        </p>
+        <p class="pull-right">
+          
+        </p>
+      </div> <!-- /.container -->
+    </footer>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      $(".nav-link").click(function(e) {
+        e.preventDefault();
+        var link = $(this);
+        var href = link.attr("href");
+        $("html,body").animate({scrollTop: $(href).offset().top - 80}, 500);
+        link.closest(".navbar").find(".navbar-toggle:not(.collapsed)").click();
+      });
+    </script>
+  </body>
+</html>

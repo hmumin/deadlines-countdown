@@ -1,0 +1,21 @@
+
+
+<center><h1> Edit deadline </h1></center>
+<%= simple_form_for @deadline, html: { class: "form-horizontal"}, :url => url_for(:action => 'update', controller => 'deadline'),
+:method => 'patch' do |f| %>
+   <%= f.error_notification %>
+
+  <%=f.input :title %>
+  <%=f.input :date, as: :string, input_html: {:id => "datetimepicker"}%>
+  <%= f.input :description, as: :text, input_html: {rows: "6"} %>
+    
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+
+<% end %>
+
+<%= link_to "Back", deadlines_path, :class =>'btn btn-primary'  %>
+
+

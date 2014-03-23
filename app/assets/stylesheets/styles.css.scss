@@ -1,0 +1,8 @@
+@import "bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
+@import "bootstrap/mixins";
+// …
+// Components: common
+@import "bootstrap/forms";
+@import "bootstrap/buttons";
+
+@import "bootstrap/alerts";
