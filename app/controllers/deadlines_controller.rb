@@ -24,7 +24,7 @@ class DeadlinesController < ApplicationController
 	def index
 		
 		@deadlines = current_user.deadlines.all
-		@deadlines = current_user.deadlines.paginate(:page => params[:page], :per_page => 5)
+		@deadlines = current_user.deadlines.order(:date).paginate(:page => params[:page], :per_page => 5)
 	end
 
 	def update
